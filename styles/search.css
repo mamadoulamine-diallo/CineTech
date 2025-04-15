@@ -2,7 +2,7 @@
 .search-container {
 position: absolute;
   width: 100%;
-  max-width: 700px;
+  max-width: 7005px;
   margin: 20px auto;
   left: 0;
   display: flex;
@@ -33,7 +33,7 @@ color: rgb(235, 214, 33);
   width: 100%;
   max-height: 300px;
   overflow-y: auto;
-  background-color: #07070773;
+  background-color: #46444473;
   border: 1px solid #ccc;
   border-top: none;
   border-radius: 0 0 4px 4px;
@@ -52,7 +52,7 @@ color: rgb(235, 214, 33);
 }
 
 .suggestion-item:hover {
-  background-color: #333232c4;
+  background-color: #d4d4d4c4;
   color: aliceblue;
 }
 

@@ -4,13 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CineTech - Séries</title>
+
+  <!--------------------STYLE------------------------------------>
   <link rel="stylesheet" href="../styles/series.css">
   <link rel="stylesheet" href="../styles/search.css">
   <link rel="stylesheet" href="../styles/voirplus.css">
   <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/pagination.css">
+    <!--------------------STYLE------------------------------------>
+
 <!----------------------FONT--------------------------------------------->
   <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
 
+<!----------------------FONT--------------------------------------------->
+
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery -->
+
+<!-- Pagination.js -->
+<script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+<link rel="stylesheet" href="https://pagination.js.org/dist/2.1.5/pagination.css">
+<!-- Pagination.js -->
 </head>
 <body>
 
@@ -35,12 +50,11 @@
     <div id="suggestions" class="suggestions"></div>
 </div>
  
-  
 
 
-
-<div>
+<div class="baba">
   <h2 class="section-title">Nos séries</h2>
+ 
 </div>
 
   <!-- Carrousel -->
@@ -56,14 +70,15 @@
 
 
 
-  <div id="additional-series-container" class="additional-series">
+  <div id="additional-series-container" class="additional-series" >
 
   </div>
 
 
-<div id="voirPlusBtnContainer">
-    <button id="voirPlusBtn">Voir plus</button>
-  </div>
+  <div id="series-container"></div>
+  <div id="pagination-container"></div>
+  
+
   
 
   <footer>
