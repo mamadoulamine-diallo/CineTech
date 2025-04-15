@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineTech - Séries</title>
+  <link rel="stylesheet" href="../styles/series.css">
+  <link rel="stylesheet" href="../styles/search.css">
+  <link rel="stylesheet" href="../styles/voirplus.css">
+  <link rel="stylesheet" href="../styles/header.css">
+<!----------------------FONT--------------------------------------------->
+  <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <header>
+    <ul class="nav-left">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Films</a></li>
+        <li><a href="#">Séries</a></li>
+    </ul>
+    <h1 class="logo">CineTech</h1>
+    <div class="nav-right">
+      <span class="favortite-button" tabindex="0" data-toggle="tooltip" title="Voir vos favoris">
+        <button class="favoris-btn" type="button" disabled>Favoris</button>
+      </span>
+        <img src="../assets/serach.png" alt="search" id="searchIcon" class="searchIcon">
+    </div>
+</header>
+
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Rechercher une série..." autocomplete="off" >
+    <div id="suggestions" class="suggestions"></div>
+</div>
+ 
+  
+
+
+
+<div>
+  <h2 class="section-title">Nos séries</h2>
+</div>
+
+  <!-- Carrousel -->
+  <div class="carousel-wrapper">
+    <div class="arrow left" onclick="scrollCarousel(-1)">←</div>
+    <div class="carousel-container">
+      <div class="carousel" id="series-container">
+       
+      </div>
+    </div>
+    <div class="arrow right" onclick="scrollCarousel(1)">→</div>
+  </div>
+
+
+
+  <div id="additional-series-container" class="additional-series">
+
+  </div>
+
+
+<div id="voirPlusBtnContainer">
+    <button id="voirPlusBtn">Voir plus</button>
+  </div>
+  
+
+  <footer>
+    Créer par Sébastien, Lamine, Estéban.
+  </footer>
+
+
+  <script src="../js/series.js"></script>
+</body>
+</html>
