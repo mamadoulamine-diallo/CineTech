@@ -1,60 +1,33 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
 
-#pagination-container {
-    text-align: center;
-    margin: 30px auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+.pagination button {
+  background-color: yellow;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  color: black;
+}
 
-  .paginationjs-pages ul {
-    list-style: none;
-    padding: 0;
-    display: inline-flex;
-    gap: 8px;
-  }
-  
+.pagination button:hover:not(:disabled) {
+  background-color: #ffd700;
+}
 
-  .paginationjs-page, .paginationjs-prev, .paginationjs-next, .paginationjs-go-button {
-    display: inline-block;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9fb;
-    color: #333;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  
-  .paginationjs-page.active {
-    background-color: #e1f71b;
-    color: white;
-    font-weight: bold;
-    border-color: #fbfbff;
-  }
-  
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
-  .paginationjs-page:hover,
-  .paginationjs-prev:hover,
-  .paginationjs-next:hover,
-  .paginationjs-go-button:hover {
-    background-color: #cedb0d;
-  }
-  
- 
-  .paginationjs-go-input > input {
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-right: 5px;
-  }
-  
-
-  .paginationjs-go-input {
-    margin-left: 20px;
-  }
-  
+#page-number {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
