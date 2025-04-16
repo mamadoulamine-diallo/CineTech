@@ -1,59 +1,70 @@
-
 const container = document.getElementById('series-container');
 const additionalSeriesContainer = document.getElementById('additional-series-container');
 const suggestionsBox = document.getElementById('suggestions');
 
-let currentIndex = 0;     
-let currentPage = 1;      
+let currentIndex = 0;
+let currentPage = 1;
 let allAdditionalSeries = [];
 
 const apiKey = '8c4b867188ee47a1d4e40854b27391ec';
 const language = 'fr-FR';
-const itemsPerPage = 8;                
-const totalPaginationPages = 20;      
-const totalItemsNeeded = totalPaginationPages * itemsPerPage; 
-const itemsPerApiPage = 20;           
-const apiPagesToFetch = Math.ceil(totalItemsNeeded / itemsPerApiPage); 
-
+const itemsPerPage = 8;
+const totalPaginationPages = 20;
+const totalItemsNeeded = totalPaginationPages * itemsPerPage;
+const itemsPerApiPage = 20;
+const apiPagesToFetch = Math.ceil(totalItemsNeeded / itemsPerApiPage);
 
 fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=${language}&page=1`)
     .then(res => res.json())
     .then(data => {
-       const carouselSeries = data.results.slice(0, 8);
-       carouselSeries.forEach(serie => {
-         const card = createSerieCard(serie);
-         container.appendChild(card);
-       });
+        const carouselSeries = data.results.slice(0, 8);
+        carouselSeries.forEach(serie => {
+            const card = createSerieCard(serie);
+            container.appendChild(card);
+        });
     })
     .catch(err => console.error("Erreur lors du chargement du carrousel:", err));
 
 Promise.all(
-  Array.from({ length: apiPagesToFetch }, (_, i) =>
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=${language}&page=${i + 1}`)
-      .then(res => res.json())
-  )
+    Array.from({ length: apiPagesToFetch }, (_, i) =>
+        fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=${language}&page=${i + 1}`)
+            .then(res => res.json())
+    )
 ).then(results => {
-   let series = [];
-   results.forEach(data => {
-      series = series.concat(data.results);
-   });
+    let series = [];
+    results.forEach(data => {
+        series = series.concat(data.results);
+    });
 
-   allAdditionalSeries = series.slice(0, totalItemsNeeded);
-   initPagination();
+    allAdditionalSeries = series.slice(0, totalItemsNeeded);
+    initPagination();
 }).catch(err => console.error("Erreur lors du chargement des séries supplémentaires:", err));
-
-
 function createSerieCard(serie) {
     const card = document.createElement('div');
     card.className = 'serie-card';
+
     card.innerHTML = `
-        <img src="https://image.tmdb.org/t/p/w300${serie.poster_path}" alt="${serie.name}">
-        <div class="bottom"><strong>${serie.name}</strong></div>
+        <img src="https://image.tmdb.org/t/p/w300${serie.poster_path}" alt="${serie.name}" class="serie-image">
+        <div class="bottom">
+            <strong class="title">${serie.name}</strong>
+            <span class="rating">${serie.vote_average}</span> <!-- Note à droite -->
+            <button class="favorite-btn" aria-label="Ajouter aux favoris" data-id="${serie.id}">
+                <span class="plus-icon" title="Ajouter aux favoris">+</span>
+            </button>
+        </div>
     `;
-    
+
+    const tooltip = document.createElement('span');
+    tooltip.className = 'tooltip-text';
+    tooltip.textContent = "Ajouter aux favoris";
+    card.querySelector('.favorite-btn').appendChild(tooltip);
+
+   
     card.addEventListener('click', () => {
-      window.location.href = `../views/seriesdetail.html?id=${serie.id}`;
+        console.log(`Naviguer vers seriesdetail.html?id=${serie.id}`); 
+        window.location.href = `../views/seriesdetail.html?id=${serie.id}`;
     });
+
     return card;
 }
 
@@ -61,7 +72,7 @@ function createSerieCard(serie) {
 function initPagination() {
     $('#pagination-container').pagination({
         dataSource: allAdditionalSeries,
-        pageSize: itemsPerPage,          
+        pageSize: itemsPerPage,
         showGoInput: true,
         showGoButton: true,
         formatGoInput: 'Page <%= input %>',
@@ -72,15 +83,13 @@ function initPagination() {
     });
 }
 
-
 function displayAdditionalSeries(data) {
     additionalSeriesContainer.innerHTML = '';
     data.forEach(serie => {
-       const card = createSerieCard(serie);
-       additionalSeriesContainer.appendChild(card);
+        const card = createSerieCard(serie);
+        additionalSeriesContainer.appendChild(card);
     });
 }
-
 
 function scrollCarousel(direction) {
     const cardWidth = 210;
@@ -94,12 +103,11 @@ function scrollCarousel(direction) {
     container.style.transform = `translateX(-${offset}px)`;
 }
 
-
 const searchInput = document.getElementById('searchInput');
 let searchTimeout;
 
 searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimeout); 
+    clearTimeout(searchTimeout);
     searchTimeout = setTimeout(handleSearchInput, 500);
 });
 
@@ -118,6 +126,7 @@ function fetchSuggestions(query) {
     fetch(url)
         .then(res => res.json())
         .then(data => {
+            console.log('Données récupérées de la recherche:', data);  // Debug: afficher la réponse complète de l'API
             const suggestions = data.results;
             displaySuggestions(suggestions);
         })
@@ -126,7 +135,7 @@ function fetchSuggestions(query) {
 
 function displaySuggestions(suggestions) {
     suggestionsBox.innerHTML = "";
-    suggestionsBox.style.display = "block"; 
+    suggestionsBox.style.display = "block";
     if (suggestions.length > 0) {
         suggestions.forEach(serie => {
             const div = createSuggestionItem(serie);
@@ -142,24 +151,31 @@ function displaySuggestions(suggestions) {
 function createSuggestionItem(serie) {
     const div = document.createElement("div");
     div.className = "suggestion-item";
-    
+
     if (serie) {
+        console.log('Structure de la série:', serie);  // Debug: afficher l'objet série complet
         div.innerHTML = `
             <img src="https://image.tmdb.org/t/p/w200${serie.poster_path}" alt="${serie.name}">
             <span>${serie.name}</span>
         `;
         div.addEventListener("click", () => {
+            console.log(`ID de la série: ${serie.id}`);  // Vérification de l'ID dans l'événement
             searchInput.value = serie.name;
             hideSuggestions();
-            window.location.href = `../views/seriesdetails.html?id=${serie.id}`;
+            if (serie.id) {
+                window.location.href = `../views/seriesdetail.html?id=${serie.id}`;
+            } else {
+                console.error("ID de la série manquant!");
+            }
         });
+        
     } else {
         div.textContent = "Aucune série trouvée";
     }
-    
+
     return div;
 }
 
 function hideSuggestions() {
-    suggestionsBox.style.display = "none"; 
+    suggestionsBox.style.display = "none";
 }
