@@ -1,0 +1,39 @@
+
+.sidebar {
+    background-color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 59px;
+    width: 180px;
+    transition: width 0.3s ease;
+  }
+  .sidebar-link {
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  .sidebar-link:hover {
+    background-color: lightgray;
+    border-radius: 5px;
+  }
+  .sidebar-link img {
+    height: 25px;
+    margin-left: 7px;
+  }
+  .sidebar-link div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: 10px;
+    margin-left: 10px;
+  }
+  .sidebar.collapsed {
+    width: 70px;
+    transition: width 0.3s ease;
+  }
+  .sidebar.collapsed .sidebar-link div {
+    display: none;
+  }
