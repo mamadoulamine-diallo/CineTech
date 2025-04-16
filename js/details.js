@@ -17,34 +17,40 @@ async function fetchSerieDetails() {
 
 
     container.innerHTML = `
-      <div class="serie-header">
-        <div class="poster">
-          <img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="${details.name}">
+    <div class="serie-details-container">
+      <div class="top-section">
+        <div class="left">
+          <img src="https://image.tmdb.org/t/p/w500${details.poster_path}" alt="${details.name}" class="serie-poster">
         </div>
-        <div class="info">
-          <h1>${details.name}</h1>
-          <div class="meta">
-            <strong>Genres:</strong> ${details.genres.map(g => g.name).join(', ')}<br>
-            <strong>Date de première diffusion:</strong> ${details.first_air_date}
-          </div>
-          <button class="fav-btn" onclick="addToFavorites('${details.name}')"> Ajouter aux favoris</button>
+        <div class="right">
+          <p><strong>Titre :</strong> ${details.name}</p>
+        <p><strong>Description :</strong> <span class="light-italic">${details.overview}</span></p>
+<p><strong>Catégorie :</strong> <span class="light-italic">${details.genres.map(g => g.name).join(', ')}</span></p>
+
+          <button class="fav-btn" onclick="addToFavorites('${details.name}')">Favoris</button>
         </div>
       </div>
-
-      <div class="overview">
-        <h2>Résumé</h2>
-        <p>${details.overview}</p>
+  
+      <hr>
+  
+      <div class="bottom-section">
+        <div class="comment-form">
+          <label>Entrez votre prénom :</label>
+          <input type="text" placeholder="Prénom">
+          <textarea placeholder="Rédigez votre commentaire ..."></textarea>
+          <button class="send-btn">Envoyer</button>
+        </div>
+  
+        <div class="comments-section">
+          <h3>Commentaires</h3>
+          <div class="comment-bubble"><strong>Prénom:</strong> Commentaire</div>
+          <div class="comment-bubble"><strong>Prénom:</strong> Commentaire</div>
+          <div class="comment-bubble"><strong>Prénom:</strong> Commentaire</div>
+        </div>
       </div>
-
-      <div class="actors">
-        <h2>Acteurs principaux</h2>
-        <ul>
-          ${credits.cast.slice(0, 6).map(actor => `<li>${actor.name}</li>`).join('')}
-        </ul>
-      </div>
-
-    
-    `;
+    </div>
+  `;
+  
   } catch (error) {
     container.innerHTML = '<p>Erreur de chargement des données.</p>';
     console.error(error);
