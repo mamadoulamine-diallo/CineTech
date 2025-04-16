@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinetech</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinetech</title>
+
+    <link rel="stylesheet" href="./styles/home.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css">
+
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left-section">
+          <img class="hamburger-menu" src="./assets/icons/hamburger-menu.svg" alt="">
+          <div><H1>CineTech</H1></div>
+        </div>
+        <div class="middle-section">
+          <input type="text" id="search" class="search-bar" placeholder="Recherche de film..." />
+        <button class="search-btn" onclick="loadMovies(document.getElementById('search').value)">
+          <img class="search-icon" src="./assets/icons/search.svg" alt="">
+        </button>
+        </div>
+        <div class="right-section">
+          <img class="notif-icon" src="./assets/icons/notifications.svg" alt="">
+          <img class="app-icon" src="./assets/images/login-icon.png" alt="">
+        </div>
+      </nav>
+    </header>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-link">
+        <img src="./assets/images/home-225.png" alt="">
+        <div>Home</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="./assets/images/movie.svg" alt="">
+        <div>Movies</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="./assets/images/tv.svg" alt="">
+        <div>Tv Shows</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="./assets/images/trending-up.svg" alt="">
+        <div>Trendings</div>
+      </div>
+      <div class="sidebar-link">
+        <img src="./assets/images/favorite.svg" alt="">
+        <div>Favorites</div>
+      </div>
+    </div>
+
+
+    <div id="result"></div>
+  </body>
 </html>
