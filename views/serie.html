@@ -6,70 +6,42 @@
   <title>Cinetech</title>
   
   <link rel="stylesheet" href="../styles/serie.css" />
-  <link rel="stylesheet" href="../styles/sidebar.css" />
+  <link rel="stylesheet" href="../styles/header.css" />
   <link rel="stylesheet" href="../styles/pagination.css">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <!--Font Family-->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Racing+Sans+One&display=swap" rel="stylesheet">
   <!-- Pagination.js -->
   <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
   <link rel="stylesheet" href="https://pagination.js.org/dist/2.1.5/pagination.css">
 
-  <script src="../js/serie.js" defer></script>
+
 </head>
 <body>
   <header>
-    <nav>
-      <div class="left-section">
-        <img class="hamburger-menu" src="../assets/icons/hamburger-menu.svg" alt="">
-        <div><h1 style="color: aliceblue;">CineTech</h1></div>
-      </div>
-      <div class="middle-section">
-        <div class="search-bar-wrapper">
-          <input type="text" id="searchInput" class="search-bar" placeholder="Recherche de série..." />
-          <button class="search-btn" id="searchIcon">
-            <img class="search-icon" src="../assets/icons/search.svg" alt="Search">
-          </button>
-          <div id="suggestions"></div>
-        </div>
-      </div>
-      <div class="right-section">
-        <img class="notif-icon" src="../assets/icons/notifications.svg" alt="">
-        <img class="app-icon" src="../assets/images/login-icon.png" alt="">
-      </div>
-    </nav>
-  </header>
-
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-link">
-      <img src="../assets/images/home-225.png" alt="">
-      <div>Home</div>
+    <ul class="nav-left">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Films</a></li>
+        <li><a href="../views/serie.html">Séries</a></li>
+    </ul>
+    <h1 class="logo">CineTech</h1>
+    <div class="nav-right">
+       <a href="../views/favoris.html"><button class="favoris-btn">Favoris</button></a> 
+        <img src="../assets/icons/search.png" alt="search" class="search-icon">
     </div>
-    <div class="sidebar-link">
-      <img src="../assets/images/movie.svg" alt="">
-      <div>Movies</div>
-    </div>
-    <div class="sidebar-link">
-      <img src="../assets/images/tv.svg" alt="">
-      <div>Tv Shows</div>
-    </div>
-    <div class="sidebar-link">
-      <img src="../assets/images/trending-up.svg" alt="">
-      <div>Trendings</div>
-    </div>
-    <div class="sidebar-link">
-      <img src="../assets/images/favorite.svg" alt="">
-      <div>Favorites</div>
-    </div>
-  </div>
-
+</header>
   <main>
-    <div class="baba">
+    <section class="baba">
       <h2 class="section-title">Nos séries</h2>
-    </div>
-
-    <div id="serie-card" class="serie-card">
-     
-    </div>
+     <img src="../assets/images/films-background.png" alt="background-image" class="background-image">
+    </section>
+            <section>
+                <div id="serie-card" class="serie-card">
+                <!--card will  be insered her ny JS --->
+                </div>
+            </section>    
+ 
 
     <div class="pagination">
       <button id="prev" class="pagination-button">Précédent</button>
@@ -84,6 +56,6 @@
     Créé par Sébastien, Lamine, Estéban.
   </footer>
 
-  <script src="../js/script.js" defer></script>
+  <script src="../js/serie.js" defer></script>
 </body>
 </html>

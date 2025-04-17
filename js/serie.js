@@ -10,6 +10,20 @@ let currentPage = 1;
 let allAdditionalSeries = [];
 
 
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites')) || [];
+}
+
+
+function saveFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+}
+
+
+function isFavorite(id) {
+  return getFavorites().some(s => s.id === id);
+}
+
 fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=${language}&page=1`)
   .then(res => res.json())
   .then(data => {
@@ -70,35 +84,68 @@ function displayAdditionalSeries(data) {
 }
 
 function createSerieCard(serie) {
+
   const card = document.createElement('div');
   card.className = 'card-wrapper';
+  card.style.cursor = 'pointer';
 
-  const link = document.createElement('a');
-  link.href = `../views/seriesdetail.html?id=${serie.id}`;
-  link.className = 'serie-link';
-  link.style.display = "block";
+  card.addEventListener('click', () => {
+    window.location.href = `../views/seriesdetail.html?id=${serie.id}`;
+  });
 
-  link.innerHTML = `
-    <img src="https://image.tmdb.org/t/p/w300${serie.poster_path}" alt="${serie.name}" class="serie-image">
-    <div class="bottom">
-      <strong class="title">${serie.name}</strong>
-      <span class="rating">${serie.vote_average}</span>
-      <button class="favorite-btn" aria-label="Ajouter aux favoris" data-id="${serie.id}">
-        <span class="plus-icon" title="Ajouter aux favoris">+</span>
-      </button>
-    </div>
+
+  const img = document.createElement('img');
+  img.src = `https://image.tmdb.org/t/p/w300${serie.poster_path}`;
+  img.alt = serie.name;
+  img.className = 'serie-image';
+  card.appendChild(img);
+
+ 
+  const bottom = document.createElement('div');
+  bottom.className = 'bottom';
+  bottom.innerHTML = `
+    <strong class="title">${serie.name}</strong>
+    <span class="rating">${serie.vote_average}</span>
+    <button class="favorite-btn" aria-label="Ajouter aux favoris" data-id="${serie.id}">
+      <span class="plus-icon" title="Ajouter aux favoris">
+        ${ isFavorite(serie.id) ? '–' : '+' }
+    
+      </span>
+    </button>
   `;
-  
-  card.appendChild(link);
+  card.appendChild(bottom);
 
-  const favoriteButton = card.querySelector('.favorite-btn');
-  favoriteButton.addEventListener('click', (event) => {
+ 
+  const favBtn = bottom.querySelector('.favorite-btn');
+  favBtn.addEventListener('click', event => {
     event.stopPropagation();
-    console.log("Ajout aux favoris:", serie.id);
+    const favs = getFavorites();
+    if (isFavorite(serie.id)) {
+    
+      const newFavs = favs.filter(s => s.id !== serie.id);
+      saveFavorites(newFavs);
+      favBtn.querySelector('.plus-icon').textContent = '+';
+      console.log('Get outtt :', serie.name);
+      console.log('Favoris actuels :', newFavs);
+    } else {
+      
+      favs.push({
+        id: serie.id,
+        name: serie.name,
+        poster_path: serie.poster_path,
+        vote_average: serie.vote_average
+      });
+      saveFavorites(favs);
+      favBtn.querySelector('.plus-icon').textContent = '–';
+      console.log('Yeah my g :', serie.name);
+      console.log('Favoris actuels :', favs);
+    }
   });
 
   return card;
 }
+
+
 
 // Recherche et suggestions
 const searchInput = document.getElementById('searchInput');

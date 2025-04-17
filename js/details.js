@@ -27,7 +27,7 @@ async function fetchSerieDetails() {
         <p><strong>Description :</strong> <span class="light-italic">${details.overview}</span></p>
 <p><strong>Catégorie :</strong> <span class="light-italic">${details.genres.map(g => g.name).join(', ')}</span></p>
 
-          <button class="fav-btn" onclick="addToFavorites('${}')">Favoris</button>
+          <button class="fav-btn" onclick="addToFavorites('${details.name}')">Favoris</button>
         </div>
       </div>
   
