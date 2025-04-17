@@ -14,24 +14,24 @@ body{
     display: none;
     transition: all 0.3s ease;
     width: 100%;
-    height: 50px;
     justify-content: space-between;
     align-items: center;
     background-color: var(--primary-color);
 }
 
 .search-bar.active{
-    display: flex;
+    display: block;
 }
 
 .search-input{
     margin-left: 40px;
     width: 85%;
-    height: 25px;
+    height: 45px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
     font-family: var(--primary-body);
     border: none;
+    font-size: 1rem;
 }
 
 .search-input:focus{
@@ -46,3 +46,42 @@ body{
     cursor: pointer;
 }
 
+.suggestions{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    background-color: var(--primary-color);
+    font-family: var(--primary-body);
+    width: 100%;
+    height: auto;
+    color: var(--secondary-color);
+    font-size: 0.6rem;
+}
+
+.suggestion-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    cursor: pointer;
+}
+
+.suggestion-item img{
+    width: 45px;
+    height: auto;
+    margin-left: 42px;
+    border-radius: 5px;
+}
+
+.suggestion-item h2{
+    margin-bottom: 10px;
+}
+
+hr{
+    width: 90%;
+    margin-left: 42px;
+    border: 1px solid var(--secondary-color);
+    opacity: 0.2;
+}

@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 displayMovies(data.results);
+                searchBar(data.results);
+                console.log(data.results);
                 pageNumberDisplay.textContent = `Page ${data.page}`;
             })
             .catch(error => {
@@ -72,6 +74,77 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPage++;
         fetchMovies(currentPage);
     });
+
+
+    function searchBar(movies) {
+        const searchInput = document.querySelector('.search-input');
+        const suggestionsContainer = document.querySelector('.suggestions');
+    
+        searchInput.addEventListener('keyup', function () {
+            const movie = searchInput.value.trim();
+    
+            const resultat = movies.filter(item =>
+                item.title.toLowerCase().includes(movie.toLowerCase())
+            );
+    
+            let suggestionsHTML = '';
+    
+            if (movie.length > 0) {
+                resultat.slice(0, 3).forEach(resultatItem => {
+                    suggestionsHTML += `
+                        <div class="suggestion-item" data-id="${resultatItem.title}">
+                            <img src="https://image.tmdb.org/t/p/w500${resultatItem.poster_path}" alt="${resultatItem.title}" />
+                            <h2>${resultatItem.title}</h2>
+                        </div>
+                        <hr/>
+                    `;
+                });
+    
+                suggestionsContainer.innerHTML = suggestionsHTML;
+            } else {
+                suggestionsContainer.innerHTML = '';
+                console.log('Aucun résultat trouvé');
+            }
+        });
+    
+        suggestionsContainer.addEventListener('click', function (event) {
+            const target = event.target.closest('.suggestion-item');
+    
+            if (target) {
+                const selectedMovieTitle = target.getAttribute('data-id');
+                searchInput.value = selectedMovieTitle;
+                suggestionsContainer.innerHTML = '';
+    
+                const selectedMovieData = movies.find(item => item.title === selectedMovieTitle);
+    
+                if (selectedMovieData) {
+                    moviesContainer.innerHTML = '';
+    
+                    const movieElement = document.createElement('div');
+                    movieElement.classList.add('movie');
+    
+                    movieElement.innerHTML = `
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500${selectedMovieData.poster_path}" alt="${selectedMovieData.title}" />
+                            <div class="movie-footer">
+                                <h2>${selectedMovieData.title}</h2>
+                                <span class="movie-rating">${selectedMovieData.vote_average}</span>
+                                <p class="favorites">+</p>
+                            </div>
+                        </div>
+                    `;
+    
+                    moviesContainer.appendChild(movieElement);
+    
+                    const favButton = movieElement.querySelector('.favorites');
+                    favButton.addEventListener('click', function () {
+                        addToFavorites(selectedMovieData);
+                    });
+                }
+            }
+        });
+    }     
+
 
     fetchMovies(currentPage);
 });
