@@ -1,7 +1,7 @@
 const additionalSeriesContainer = document.getElementById('serie-card');
 const apiKey = '8c4b867188ee47a1d4e40854b27391ec';
 const language = 'fr-FR';
-const itemsPerPage = 9;
+const itemsPerPage = 12;
 const totalPaginationPages = 20;
 const totalItemsNeeded = totalPaginationPages * itemsPerPage;
 const itemsPerApiPage = 20;

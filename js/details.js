@@ -7,7 +7,7 @@ async function fetchSerieDetails() {
     const [detailsRes, creditsRes, videoRes] = await Promise.all([
       fetch(`https://api.themoviedb.org/3/tv/${serieId}?api_key=${apiKey}&language=fr-FR`),
       fetch(`https://api.themoviedb.org/3/tv/${serieId}/credits?api_key=${apiKey}&language=fr-FR`),
-      fetch(`https://api.themoviedb.org/3/tv/${serieId}/videos?api_key=${apiKey}&language=fr-FR`)
+    
     ]);
 
     const details = await detailsRes.json();
@@ -27,7 +27,7 @@ async function fetchSerieDetails() {
         <p><strong>Description :</strong> <span class="light-italic">${details.overview}</span></p>
 <p><strong>Catégorie :</strong> <span class="light-italic">${details.genres.map(g => g.name).join(', ')}</span></p>
 
-          <button class="fav-btn" onclick="addToFavorites('${details.name}')">Favoris</button>
+          <button class="fav-btn" onclick="addToFavorites('${}')">Favoris</button>
         </div>
       </div>
   
