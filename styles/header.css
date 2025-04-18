@@ -1,52 +1,56 @@
-
-body{
+body {
     margin: 0;
     padding: 0;
-}
-
-
-header {
+  }
+  
+  header {
     background-color: #111;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     height: 70px;
-}
-
-.logo{
+    flex-wrap: wrap; 
+  }
+  
+  .logo {
     font-family: var(--secondary-body);
     color: var(--secondary-color);
-    width: 100%;
     text-align: center;
-}
+    font-size: 1.5rem;
+    flex: 1; 
+  }
+  
 
-.nav-right{
+  h2{
+    color: var();
+  }
+  .nav-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
-    width: 35%;
     gap: 15px;
-}
-
-.nav-left{
+    flex: 1; 
+  }
+  
+  .nav-left {
     display: flex;
     flex-direction: row;
     gap: 30px;
     list-style: none;
-    width: 30%;
-}
-
-.nav-left a{
+    flex: 1; 
+    justify-content: center;
+  }
+  
+  .nav-left a {
     text-decoration: none;
     color: white;
     font-family: var(--primary-body);
     font-weight: bold;
     font-size: 1.1rem;
-}
-
-.favoris-btn{
+  }
+  
+  .favoris-btn {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
@@ -56,11 +60,67 @@ header {
     font-size: 0.9rem;
     padding: 10px 45px;
     cursor: pointer;
-}
-
-.search-icon{
+  }
+  
+  .search-icon {
     user-select: none;
     cursor: pointer;
     width: 35px;
     height: auto;
-}
+  }
+  
+  /* Responsive */
+  @media only screen and (max-width: 900px) {
+    header {
+      flex-direction: column; 
+      align-items: center;
+      height: auto; 
+    }
+  
+    .logo {
+      margin-bottom: 10px;
+      font-size: 1.3rem; 
+    }
+  
+    .nav-left {
+      flex-direction: column; 
+      gap: 15px;
+      width: 100%; 
+      align-items: center;
+    }
+  
+    .nav-right {
+      flex-direction: column; 
+      gap: 10px;
+      width: 100%;
+      align-items: center;
+    }
+  
+    .favoris-btn {
+      padding: 8px 30px; 
+      font-size: 0.85rem;
+    }
+  
+    .search-icon {
+      width: 30px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .logo {
+      font-size: 1.2rem; 
+    }
+  
+    .nav-left a {
+      font-size: 1rem; 
+    }
+  
+    .favoris-btn {
+      padding: 6px 20px; 
+      font-size: 0.8rem;
+    }
+  
+    .search-icon {
+      width: 25px;
+    }
+  }

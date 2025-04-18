@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../styles/serie.css" />
   <link rel="stylesheet" href="../styles/header.css" />
   <link rel="stylesheet" href="../styles/pagination.css">
+  <link rel="stylesheet" href="../styles/search.css">
  <!--Font Family-->
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,20 +28,28 @@
     </ul>
     <h1 class="logo">CineTech</h1>
     <div class="nav-right">
-       <a href="../views/favoris.html"><button class="favoris-btn">Favoris</button></a> 
+        <a href="../views/favoris.html"><button class="favoris-btn">Favoris</button></a>
         <img src="../assets/icons/search.png" alt="search" class="search-icon">
     </div>
 </header>
+
+<div class="search-bar-container hidden">
+    <input type="text" id="searchInput" placeholder="Rechercher une série..." />
+    <div id="suggestions" class="suggestions"></div>
+</div>
+
   <main>
     <section class="baba">
-      <h2 class="section-title">Nos séries</h2>
-     <img src="../assets/images/films-background.png" alt="background-image" class="background-image">
+      <div class="banner-content">
+        <h2 class="section-title">Nos séries</h2>
+      </div>
+      <img src="../assets/images/films-background.png" alt="Bannière des séries" class="banner-image">
     </section>
-            <section>
-                <div id="serie-card" class="serie-card">
-                <!--card will  be insered her ny JS --->
-                </div>
-            </section>    
+    <section>
+      <div id="serie-card" class="serie-card">
+        <!--card will be inserted here by JS -->
+      </div>
+    </section>
  
 
     <div class="pagination">
@@ -57,5 +66,6 @@
   </footer>
 
   <script src="../js/serie.js" defer></script>
+  <script src="../js/search.js" defer></script>
 </body>
 </html>

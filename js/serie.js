@@ -126,7 +126,7 @@ function createSerieCard(serie) {
       saveFavorites(newFavs);
       favBtn.querySelector('.plus-icon').textContent = '+';
       console.log('Get outtt :', serie.name);
-      console.log('Favoris actuels :', newFavs);
+      console.log('actual fav :', newFavs);
     } else {
       
       favs.push({
@@ -138,7 +138,7 @@ function createSerieCard(serie) {
       saveFavorites(favs);
       favBtn.querySelector('.plus-icon').textContent = '–';
       console.log('Yeah my g :', serie.name);
-      console.log('Favoris actuels :', favs);
+      console.log('actual fav:', favs);
     }
   });
 
