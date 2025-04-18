@@ -42,11 +42,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             moviesContainer.appendChild(movieElement);
 
+            const movieCard = movieElement.querySelector('.movie-card');
+            movieCard.addEventListener('click', function () {
+                redirectToDetail(movie.id);
+            });
+
             const favButton = movieElement.querySelector('.favorites');
             favButton.addEventListener('click', function () {
                 addToFavorites(movie);
             });
         });
+    }
+
+    function redirectToDetail(movieId) {
+        window.location.href = `details-movie.html?id=${movieId}`;
     }
 
     function addToFavorites(movie) {
