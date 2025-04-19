@@ -141,22 +141,22 @@ body {
 .comments-section {
   flex: 1;
   padding: 20px;
-  background-color: #1e1e1e; /* Fond sombre */
+  background-color: #1e1e1e; 
   border: 1px solid #333;
   border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Ombre moderne */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
 .comments-section h3 {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  color: var(--secondary-color); /* Couleur secondaire */
+  color: var(--secondary-color); 
   font-family: var(--secondary-body);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--secondary-color); /* Ligne décorative */
+  border-bottom: 2px solid var(--secondary-color); 
   padding-bottom: 10px;
 }
 
