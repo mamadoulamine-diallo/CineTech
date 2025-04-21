@@ -10,6 +10,10 @@ body{
     --secondary-body: "Racing Sans One", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .search-bar{
     display: none;
     transition: all 0.3s ease;

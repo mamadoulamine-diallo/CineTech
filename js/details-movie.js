@@ -38,42 +38,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function fetchMovieReviews(movieId) {
         const reviewsUrl = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=8c4b867188ee47a1d4e40854b27391ec&language=fr-FR`;
-
+    
         fetch(reviewsUrl)
             .then(response => response.json())
             .then(data => {
                 const apiReviews = data.results || [];
-                displayMovieReviews(apiReviews);
-
                 const localReviews = JSON.parse(localStorage.getItem(`comments_${movieId}`)) || [];
-                displayLocalComments(localReviews);
+    
+                displayAllReviews([...apiReviews, ...localReviews]); // fusion API + local
             })
             .catch(error => {
                 console.error("Erreur lors de la récupération des commentaires :", error);
             });
     }
-
-    function displayMovieReviews(reviews) {
+    
+    function displayAllReviews(reviews) {
         const commentsList = document.getElementById('comments-list');
         commentsList.innerHTML = '';
-
+    
         if (reviews.length === 0) {
             commentsList.innerHTML = '<p>Aucun commentaire disponible pour ce film.</p>';
             return;
         }
-
+    
         reviews.forEach(review => {
             const comment = document.createElement('div');
             comment.classList.add('comment');
-
+    
             comment.innerHTML = `
-                <h4>${review.author}</h4>
+                <h4>${review.author || "Utilisateur"}</h4>
                 <p>${review.content}</p>
             `;
-
+    
             commentsList.appendChild(comment);
         });
     }
+    
 
     function displayLocalComments(comments) {
         const commentsList = document.getElementById('comments-list');
@@ -109,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem(`comments_${movieId}`, JSON.stringify(localComments));
 
-        // Réaffiche uniquement les commentaires locaux pour éviter doublons
         displayLocalComments([{
             author: 'Utilisateur',
             content: commentText
