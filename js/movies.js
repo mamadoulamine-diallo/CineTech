@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const favButton = movieElement.querySelector('.favorites');
             favButton.addEventListener('click', function () {
                 addToFavorites(movie);
+                event.stopPropagation();
             });
         });
     }

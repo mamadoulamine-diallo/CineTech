@@ -20,13 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
     function displayMovieDetails(movie) {
         const movieTitle = document.getElementById('title');
         const moviePoster = document.getElementById('poster');
-        //const movieDescription = document.getElementById('description');
-        //const movieCategory = document.getElementById('category');
+        const movieDescription = document.getElementById('description');
+        const movieCategory = document.getElementById('category');
+        const movieDate = document.getElementById('release-date');
+        const movieComment = document.getElementById('comments-list');
 
 
         if (movie) {
             movieTitle.textContent = movie.title;
             moviePoster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            movieDescription.textContent = movie.overview;
+            movieCategory.textContent = movie.genres.map(genre => genre.name).join(',');
+            movieDate.textContent = movie.release_date;
+            //movieComment.textContent = 
         } else {
             console.error("Le film n'a pas pu être trouvé.");
         }

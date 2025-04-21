@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const deleteButton = movieElement.querySelector('.delete-favorites');
         deleteButton.addEventListener('click', function(){
             removeFromFavorites(movie);
+            event.stopPropagation();
         })
 
         });
