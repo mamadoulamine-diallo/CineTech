@@ -51,23 +51,13 @@ async function fetchAndDisplay(url, containerId) {
   `).join('');
 }
 
-// ==== Script Burger Menu ====
-document.addEventListener("DOMContentLoaded", function () {
-  const burger = document.querySelector(".hamburger-menu");
-  const sidebar = document.getElementById("sidebar");
-
-  burger?.addEventListener("click", function () {
-    sidebar.classList.toggle("collapsed");
-  });
-});
-
 document.addEventListener("DOMContentLoaded", async () => {
   await displayBanner(); 
   fetchAndDisplay(endpoints.trending, "trending");
   fetchAndDisplay(endpoints.latestMovies, "latest-movies");
   fetchAndDisplay(endpoints.latestSeries, "latest-shows");
 
-  // Fetch trending movies pour la barre de recherche
+  // Fetch trending movies for search bar
   const response = await fetch(endpoints.trending);
   const data = await response.json();
   const movies = data.results;
@@ -75,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   searchBar(movies);
 });
 
-// ==== Barre de recherche (affichage + suggestions) ====
+// ==== search bar display and suggestions
 document.addEventListener("DOMContentLoaded", function () {
   const searchIcon = document.querySelector('.search-icon');
   const searchBar = document.querySelector('.search-bar');
