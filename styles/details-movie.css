@@ -135,3 +135,16 @@ h3{
 #comment-form button:hover{
     transform: scale(1.02);
 }
+
+@media only screen and (max-width: 900px) {
+
+    .details-movie{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .movie-comments{
+        flex-direction: column-reverse;
+    }
+    
+}
