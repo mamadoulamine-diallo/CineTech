@@ -1,0 +1,135 @@
+main{
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+.header-movies{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+}
+
+.header-movies h2{
+    font-size: 2rem;
+    color: white;
+    font-family: var(--primary-body);
+}
+
+.background-image{
+    opacity: 0.3;
+    filter: blur(5px);
+    transform: scale(1.1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.movies-list{
+    margin-top: 50px;
+    padding-bottom: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.movies-container{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie-card{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-card h2{
+    width: 50%;
+    font-size: 0.7rem;
+    color: var(--primary-color);
+    font-family: var(--primary-body);
+    margin-top: 10px;
+}
+
+.movie-card img{
+    width: 266px;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.movie-footer {
+    background-color: var(--secondary-color);
+    width: 250px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.movie-footer span{
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    font-family: var(--primary-body);
+    font-weight: bold;
+    background-color: var(--primary-color);
+    padding: 2px 5px;
+    text-align: center;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.favorites, .delete-favorites{
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-family: var(--primary-body);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*PAGINATION*/
+.pagination{
+    gap: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#prev, #next{
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    padding: 5px 20px;
+    font-family: var(--primary-body);
+    border: none;
+    cursor: pointer;
+}
+
+#page-number{
+    font-family: var(--primary-body);
+    font-size: 0.9rem;
+    color: white;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}

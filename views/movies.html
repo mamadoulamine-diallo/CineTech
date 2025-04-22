@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/movies.css">
+    <!--Script JavaScript-->
+    <script src="../js/movies.js"></script>
+    <script src="../js/search-bar.js"></script>
+    <!--Link CSS-->
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/movies.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!--Font Family-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <!--Title Page-->
+    <title>CineTech - Films</title>
+</head>
+<body>
+
+    <header>
+        <ul class="nav-left">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../views/movies.html">Films</a></li>
+            <li><a href="../views/serie.html">Séries</a></li>
+        </ul>
+        <a href="../index.html"><h1 class="logo">CineTech</h1></a>
+        <div class="nav-right">
+            <a href="../views/favorite-movies.html"><button class="favoris-btn">Favoris</button></a>
+            <img src="../assets/search.png" alt="search" class="search-icon">
+        </div>
+    </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher un film..." class="search-input">
+        <div class="suggestions"></div>
+    </div>
+
+    <main>
+        <section class="header-movies">
+            <h2>Films - CineTech</h2>
+            <img src="../assets/films-background.png" alt="background" class="background-image">
+        </section>
+        
+        <section class="movies-list">
+            <div class="movies-container"></div>
+        </section>
+
+        <section class="pagination">
+            <button id="prev">Précédent</button>
+            <span id="page-number">Page 1</span>
+            <button id="next">Suivant</button>
+        </section>
+    </main>
+
+
+
+
+    
+</body>
+</html>

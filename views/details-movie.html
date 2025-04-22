@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/movies.css">
+    <!--Script JavaScript-->
+    <script src="../js/details-movie.js"></script>
+    <!--Link CSS-->
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/details-movie.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <!--Font Family-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Racing+Sans+One&display=swap" rel="stylesheet">
+    <!--Title Page-->
+    <title>CineTech - Films</title>
+</head>
+<body>
+
+    <header>
+        <ul class="nav-left">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../views/movies.html">Films</a></li>
+            <li><a href="../views/serie.html">Séries</a></li>
+        </ul>
+        <a href="../index.html"><h1 class="logo">CineTech</h1></a>
+        <div class="nav-right">
+            <a href="../views/favorite-movies.html"><button class="favoris-btn">Favoris</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="details-movie">
+            <div class="movie-poster">
+                <img id="poster" src="" alt="Movie Poster">
+
+            </div>
+            <div class="movie-informations">
+                <h2 id="title"></h2>
+                <p id="category"></p>
+                <p id="description"></p>
+                <p id="release-date"></p>
+            </div>
+        </section>
+        <hr/>
+        <h3>Commentaires</h3>
+        <section class="movie-comments">
+            <div class="comments-list" id="comments-list"></div>
+            <form id="comment-form" class="comment-form">
+                <input type="text" id="comment-input" placeholder="Ajouter un commentaire" required>
+                <button type="submit">Envoyer</button>
+            </form>
+    </main>
+
+    
+</body>
+</html>

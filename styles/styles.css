@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #151515;
+    --secondary-color: #F6E41F;
+    --primary-body: "Roboto", sans-serif;
+    --secondary-body: "Racing Sans One", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.search-bar{
+    display: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+}
+
+.search-bar.active{
+    display: block;
+}
+
+.search-input{
+    margin-left: 40px;
+    width: 85%;
+    height: 45px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--primary-body);
+    border: none;
+    font-size: 1rem;
+}
+
+.search-input:focus{
+    outline: none;
+    border: none;
+}
+
+.search-button{
+    width: 40px;
+    height: auto;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.suggestions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    background-color: var(--primary-color);
+    font-family: var(--primary-body);
+    width: 100%;
+    height: auto;
+    color: var(--secondary-color);
+    font-size: 0.6rem;
+}
+
+.suggestion-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    cursor: pointer;
+}
+
+.suggestion-item img{
+    width: 45px;
+    height: auto;
+    margin-left: 42px;
+    border-radius: 5px;
+}
+
+.suggestion-item h2{
+    margin-bottom: 10px;
+}
+
+hr{
+    width: 90%;
+    margin-left: 42px;
+    border: 1px solid var(--secondary-color);
+    opacity: 0.2;
+}
